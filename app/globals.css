@@ -1,26 +1,195 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --orange-500: #ff9800;
+  --orange-600: #ff7f00;
+  --bg-dark: #141414;
+  --panel: #1f1f1f;
+  --muted: #cfcfcf;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body,
+#root {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue",
+    Arial;
+  margin: 0;
+  background: linear-gradient(180deg, #2b2b2b 0%, #141213 60%);
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.site-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 20px;
+}
+.hero {
+  background: linear-gradient(
+    180deg,
+    var(--orange-500) 0%,
+    var(--orange-600) 60%
+  );
+  padding: 48px 20px 36px;
+  border-radius: 12px;
+  color: #fff;
+  position: relative;
+  overflow: visible;
+  margin-bottom: 28px;
+}
+
+.hero-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.hero-title {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.hero-sub {
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.hero-heroimg{
+  width: 100%;
+  max-width: 420px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px #0008;
+  display: block;
+}
+
+
+.discover-btn {
+  background: linear-gradient(90deg, var(--orange-500) 0%, var(--orange-600) 100%);
+  color: #fff;
+  padding: 16px 36px;
+  border-radius: 40px;
+  font-weight: 800;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px #0006, 0 1.5px 0 #fff inset;
+  transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s, background 0.18s;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.discover-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #fff6 0%, #fff0 100%);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.discover-btn:hover::before {
+  opacity: 1;
+}
+
+.discover-btn:hover {
+  background: linear-gradient(90deg, #fff 0%, #ffe0b2 100%);
+  color: var(--orange-600);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 12px 32px #0007;
+}
+
+.discover-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 4px 10px #0006;
+}
+
+.discover-btn a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.search-bar {
+  margin-top: 12px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  box-shadow: 0 2px 10px #0006;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.recipe-card {
+  background: var(--panel);
+  padding: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px #0006;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recipe-card .thumb {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 4px solid rgba(0, 0, 0, 0.35);
+}
+
+.recipe-title {
+  font-weight: 700;
+  color: var(--orange-500);
+  font-size: 14px;
+}
+.recipe-meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+@media (min-width: 900px) {
+  .hero-title {
+    font-size: 48px;
+  }
+  .hero {
+    padding: 64px 20px;
+  }
 }

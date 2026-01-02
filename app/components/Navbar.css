@@ -1,0 +1,121 @@
+
+
+.navbar.orange-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--orange-500, #ff9800);
+  padding: 0.7rem 2.5rem;
+  box-shadow: 0 2px 16px #0002;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 70px;
+}
+
+.navbar-logo-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chef-hat {
+  font-size: 2.2rem;
+  margin-right: 2px;
+  color: #fff;
+}
+
+.navbar-branding {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.orange-title {
+  color: #f57c1a;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+.feast-title {
+  color: #222;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-left: 2px;
+}
+.navbar-subtitle {
+  color: #222;
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.navbar-center {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.navbar-link {
+  color: #222;
+  text-decoration: none;
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.18s, background 0.18s;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+.navbar-link:hover,
+.navbar-link:focus {
+  color: #f57c1a;
+  background: #fff3;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-search {
+  background: #fff;
+  border-radius: 6px;
+  padding: 2px 10px 2px 6px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px #0001;
+}
+.navbar-search-input {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: transparent;
+  color: #222;
+  min-width: 120px;
+}
+
+@media (max-width: 700px) {
+  .navbar.orange-navbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.7rem 1rem;
+    min-height: unset;
+  }
+  .navbar-center {
+    justify-content: center;
+    gap: 1.2rem;
+    margin: 8px 0;
+  }
+  .navbar-logo-block {
+    gap: 8px;
+  }
+  .navbar-search-input {
+    min-width: 70px;
+  }
+}

@@ -1,0 +1,61 @@
+.header {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem auto;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #ffa500;
+  max-width: 80rem;
+}
+
+.image {
+  position: relative;
+  width: 25rem;
+  height: 25rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 1rem rgba(255, 165, 0, 0.5);
+}
+
+.image img {
+  object-fit: cover;
+}
+
+.headerText {
+  color: #fff;
+}
+
+.headerText h1 {
+  font-size: 3rem;
+  color: #ffa500;
+  margin-bottom: 1rem;
+}
+
+.creator {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.creator a {
+  color: #ffa500;
+  text-decoration: none;
+}
+
+.creator a:hover {
+  text-decoration: underline;
+}
+
+.summary {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.instructions {
+  background: #232323;
+  color: #ccc;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 80rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
