@@ -1,0 +1,116 @@
+.loadingContainer {
+  display: flex;
+  flex-direction: column; /* Keep column direction */
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.spinner {
+  width: 56px;
+  height: 56px;
+  border: 8px solid #f3f3f333;
+  border-top: 8px solid #ff9800;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinnerText {
+  margin-top: 20px;
+  color: #ff9800;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+/* Container spacing */
+.section-container {
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+/* The Heading */
+.section-title {
+  color: #ffb23a;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* The Grid Layout */
+.recipe-grid {
+  display: grid;
+  /* Creates a responsive grid that fits as many cards as possible */
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* The Card Component */
+.recipe-card {
+  background-color: #1a1a1a; /* Slightly lighter than the page background */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Hover Effect: Lift up and glow */
+.recipe-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 178, 58, 0.3); /* Subtle orange border on hover */
+}
+
+/* Image styling */
+.recipe-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.recipe-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Zoom image slightly on hover */
+.recipe-card:hover .recipe-image {
+  transform: scale(1.05);
+}
+
+/* Content Layout */
+.recipe-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recipe-title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.recipe-meta {
+  color: #ffb23a; /* Star color */
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}

@@ -14,7 +14,7 @@ const config: Config = {
         background: 'rgb(var(--background-start-rgb))',
         orange: {
           '400': '#fb923c',
-          '500': '#f97316',
+          '500': '#ff9800',
         }
       }
     },

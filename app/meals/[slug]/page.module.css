@@ -59,3 +59,154 @@
   font-size: 1.2rem;
   line-height: 1.6;
 }
+/* Container for the whole page content */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* --- Hero Section --- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+/* On desktop, split 50/50 */
+@media (min-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3; /* Enforces a nice rectangular shape */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recipeImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.imageWrapper:hover .recipeImage {
+  transform: scale(1.05);
+}
+
+/* --- Hero Text Content --- */
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-size: 3rem; /* Big and bold */
+  line-height: 1.1;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(90deg, #ff9800, #ffc107);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -1px;
+}
+
+.creator {
+  font-size: 1.1rem;
+  color: #a1a1a1;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.creator a {
+  color: #ff9800;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.creator a:hover {
+  border-bottom-color: #ff9800;
+}
+
+.summary {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  background: #1f1f1f; /* Card background */
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #ff9800; /* Orange accent line */
+}
+
+/* --- Instructions Section --- */
+.instructionsSection {
+  margin-top: 40px;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 12px;
+}
+
+.instructionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.instructionCard {
+  background-color: #1f1f1f;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: transform 0.2s;
+}
+
+.instructionCard:hover {
+  transform: translateY(-2px);
+  background-color: #252525;
+}
+
+.stepNumber {
+  background: #ff9800;
+  color: #000;
+  font-weight: 800;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Prevents shrinking */
+  font-size: 1.1rem;
+}
+
+.stepText {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #d1d1d1;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

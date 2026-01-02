@@ -1,27 +1,20 @@
+import { Suspense } from 'react';
 import HomePageClient from './HomePageClient';
-import db from './lib/db';
+import Recipes from './components/Recipes';
+import Loading from './loading';
 
-interface Meal {
-  id: number;
-  slug: string;
-  title: string;
-  image: string;
-  summary: string;
-  instructions: string;
-  creator: string;
-  creator_email: string;
-}
-
-async function getMeals(): Promise<Meal[]> {
-  const stmt = db.prepare('SELECT * FROM recipes');
-  const meals = stmt.all() as Meal[];
-  return meals;
-}
-
-export default async function Home() {
-  const meals = await getMeals();
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const query = typeof searchParams.q === 'string' ? searchParams.q : undefined;
 
   return (
-    <HomePageClient meals={meals} />
+    <HomePageClient>
+      <Suspense fallback={<Loading />}>
+        <Recipes query={query} />
+      </Suspense>
+    </HomePageClient>
   );
 }

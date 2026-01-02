@@ -1,4 +1,4 @@
-import classes from "./loading.module.css";
+import classes from './loading.module.css';
 
 export default function Loading() {
   return (
@@ -8,4 +8,3 @@ export default function Loading() {
     </div>
   );
 }
-    

@@ -16,13 +16,8 @@ interface Meal {
 }
 
 const MealsPageClient = ({ meals }: { meals: Meal[] }) => {
-  const [search, setSearch] = useState("");
   const [hovered, setHovered] = useState<number | null>(null);
   const router = useRouter();
-
-  const filteredMeals = meals.filter((meal) =>
-    meal.title.toLowerCase().includes(search.toLowerCase())
-  );
 
   return (
     <main
@@ -45,29 +40,8 @@ const MealsPageClient = ({ meals }: { meals: Meal[] }) => {
         🍽️ Explore Meals
       </h1>
       <p style={{ textAlign: 'center', color: '#ccc', maxWidth: '600px', margin: '0 auto 30px' }}>
-        Explore our delicious and diverse selection of meals. From hearty classics to exotic new flavors, there's something to satisfy every craving. Use the search bar to find your next favorite dish!
+        Explore our delicious and diverse selection of meals. From hearty classics to exotic new flavors, there's something to satisfy every craving.
       </p>
-      <div
-        style={{ display: "flex", justifyContent: "center", marginBottom: 30 }}
-      >
-        <input
-          type="text"
-          placeholder="Search meals..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{
-            padding: "10px 18px",
-            borderRadius: 8,
-            border: "1px solid #ffa500",
-            outline: "none",
-            fontSize: 18,
-            width: 280,
-            background: "#222",
-            color: "#ffa500",
-            transition: "border 0.2s",
-          }}
-        />
-      </div>
       <div
         style={{
           display: "grid",
@@ -77,7 +51,7 @@ const MealsPageClient = ({ meals }: { meals: Meal[] }) => {
           margin: "0 auto",
         }}
       >
-        {filteredMeals.length === 0 ? (
+        {meals.length === 0 ? (
           <div
             style={{
               gridColumn: "1/-1",
@@ -88,7 +62,7 @@ const MealsPageClient = ({ meals }: { meals: Meal[] }) => {
             No meals found.
           </div>
         ) : (
-          filteredMeals.map((meal, idx) => (
+          meals.map((meal, idx) => (
             <div
               key={meal.id}
               onMouseEnter={() => setHovered(meal.id)}

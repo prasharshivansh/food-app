@@ -1,25 +1,26 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useTransition } from 'react';
 
-interface Meal {
-  id: number;
-  slug: string;
-  title: string;
-  image: string;
-  summary: string;
-  instructions: string;
-  creator: string;
-  creator_email: string;
-}
+const HomePageClient = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
 
-const HomePageClient = ({ meals }: { meals: Meal[] }) => {
-  const [query, setQuery] = useState("");
-
-  const filtered = meals.filter((r) =>
-    r.title.toLowerCase().includes(query.toLowerCase())
-  );
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const params = new URLSearchParams(window.location.search);
+    if (e.target.value) {
+      params.set('q', e.target.value);
+    } else {
+      params.delete('q');
+    }
+    startTransition(() => {
+      router.replace(`${pathname}?${params.toString()}`);
+    });
+  }
 
   return (
     <div className="site-container">
@@ -63,31 +64,13 @@ const HomePageClient = ({ meals }: { meals: Meal[] }) => {
             <input
               className="search-input"
               placeholder="Find your next meal..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              defaultValue={searchParams.get('q') ?? ''}
+              onChange={handleSearch}
             />
           </div>
         </div>
       </header>
-
-      <section style={{ marginTop: 12 }}>
-        <h3 style={{ color: "#ffb23a", margin: "12px 0 10px", fontSize: 18 }}>
-          Popular recipes
-        </h3>
-        <div className="recipe-grid">
-          {filtered.map((r) => (
-            <Link href={`/meals/${r.slug}`} key={r.id} style={{ textDecoration: 'none', color: 'inherit' }}>
-              <article className="recipe-card">
-                <Image src={r.image} alt={r.title} className="thumb" width={300} height={200} style={{ objectFit: "cover" }} />
-                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                  <div className="recipe--title">{r.title}</div>
-                  <div className="recipe-meta">★ ★ ★ ★ ★</div>
-                </div>
-              </article>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <div style={{ marginTop: 12 }}>{children}</div>
     </div>
   );
 }
