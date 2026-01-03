@@ -18,6 +18,7 @@ export default function Navbar() {
       <div className="navbar-center">
         <Link href="/" className="navbar-link">HOME</Link>
         <Link href="/meals" className="navbar-link">RECIPES</Link>
+        <Link href="/share" className="navbar-link">SHARE</Link>
         <Link href="/favorites" className="navbar-link">FAVORITES</Link>
       </div>
       <div className="navbar-right">
