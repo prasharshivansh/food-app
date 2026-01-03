@@ -1,8 +1,14 @@
 import { Suspense } from 'react';
 import Loading from '../loading';
 import Meals from './Meals';
+import { Metadata } from 'next';
 
-export default function MealsPage({
+export const metadata: Metadata = {
+  title: "All Meals - Orange Feast",
+  description: "Browse all the delicious meals available on Orange Feast. Find your next favorite recipe!",
+};
+
+export default async function MealsPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };

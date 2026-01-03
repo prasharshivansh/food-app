@@ -5,6 +5,7 @@ import db from '../lib/db';
 import { writeFile } from 'fs/promises';
 import xss from 'xss';
 import { generateSlug } from '../lib/db';
+import { revalidatePath } from 'next/cache';
 
 
 interface Meal {
@@ -27,16 +28,37 @@ export async function saveMeal(formData: FormData) {
     image: formData.get('image') as File,
   };
 
-  if (
-    !meal.title ||
-    !meal.summary ||
-    !meal.instructions ||
-    !meal.creator ||
-    !meal.creator_email ||
-    !meal.image ||
-    meal.image.size === 0
-  ) {
-    throw new Error('Invalid input');
+  const errors: { [key: string]: string } = {};
+
+  if (!meal.title || meal.title.trim() === '' || meal.title.length > 100) {
+    errors.title = "Please provide a valid meal title (max 100 characters).";
+  }
+
+  if (!meal.summary || meal.summary.trim() === '' || meal.summary.length > 200) {
+    errors.summary = "Please provide a short summary (max 200 characters).";
+  }
+
+  if (!meal.instructions || meal.instructions.trim() === '' || meal.instructions.length < 20) {
+    errors.instructions = "Please provide detailed cooking instructions.";
+  }
+
+  if (!meal.image || meal.image.size === 0 || meal.image.size > 5 * 1024 * 1024 || (meal.image.type !== 'image/png' && meal.image.type !== 'image/jpeg')) {
+    errors.image = "Please upload a valid image (PNG/JPEG, under 5MB).";
+  }
+
+  if (!meal.creator || meal.creator.trim() === '') {
+    errors.creator = "Please enter your name.";
+  }
+
+  if (!meal.creator_email || !meal.creator_email.includes('@') || !meal.creator_email.includes('.')) {
+    errors.creator_email = "Please enter a valid email address.";
+  }
+
+  if (Object.keys(errors).length > 0) {
+    return {
+      message: 'Missing or invalid fields',
+      errors,
+    };
   }
 
   const extension = meal.image.name.split('.').pop();
@@ -66,6 +88,6 @@ export async function saveMeal(formData: FormData) {
     newMeal.creator,
     newMeal.creator_email
   );
-
+  revalidatePath('/meals');
   redirect('/meals');
 }

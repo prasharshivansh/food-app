@@ -19,7 +19,7 @@ const MealsPageClient = ({ meals }: { meals: Meal[] }) => {
   const [hovered, setHovered] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
+  
   const handleSelectMeal = (slug: string) => {
     setLoading(true);
     router.push(`/meals/${slug}`);
@@ -88,7 +88,7 @@ const MealsPageClient = ({ meals }: { meals: Meal[] }) => {
           }}
         >
           Explore our delicious and diverse selection of meals. From hearty
-          classics to exotic new flavors, there's something to satisfy every
+          classics to exotic new flavors, there&apos;s something to satisfy every
           craving.
         </p>
         <div
