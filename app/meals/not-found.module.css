@@ -1,0 +1,20 @@
+.not-found {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #ddd6cb;
+}
+
+.not-found h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #f9572a, #ffc905);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.not-found p {
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
