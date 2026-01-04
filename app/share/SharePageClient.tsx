@@ -1,14 +1,13 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { useFormState } from "react-dom";
+import { useState, useRef, useActionState } from "react";
 import Image from "next/image";
 import { saveMeal } from "../actions/meals";
 import MealsFormSubmit from "../components/Meals-form-submit";
 
 export default function SharePageClient() {
   const [pickedImage, setPickedImage] = useState<string | null>(null);
-  const [state, formAction] = useFormState(saveMeal, { message: "", errors: {} });
+  const [state, formAction] = useActionState(saveMeal, { message: "", errors: {} });
   const imageInput = useRef<HTMLInputElement>(null);
 
   // 1. Trigger the hidden file input click

@@ -18,7 +18,7 @@ interface Meal {
 }
 
 
-export async function saveMeal(formData: FormData) {
+export async function saveMeal(prevState: { message: string, errors: { [key: string]: string } }, formData: FormData) {
   const meal: Meal = {
     title: formData.get('title') as string,
     summary: formData.get('summary') as string,
