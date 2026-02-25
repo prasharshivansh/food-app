@@ -63,7 +63,7 @@ const HomePageClient = ({ children }: { children: React.ReactNode }) => {
           <div className="search-bar">
             <input
               className="search-input"
-              placeholder="Find your next meal..."
+              placeholder="Find your next delicious meal..."
               defaultValue={searchParams.get('q') ?? ''}
               onChange={handleSearch}
             />
